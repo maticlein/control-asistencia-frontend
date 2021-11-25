@@ -50,17 +50,17 @@ function App() {
         <video
             ref={videoRef}
             style={{ transform: "scale(-1, 1)" }}
-            width="300"
-            height="150"
+            width="500"
+            height="350"
           />
-          {result.length > 0 && (
+        <button onClick={() => toggle()}>
+              {start ? "Stop" : "Start"}
+        </button>
+        {result.length > 0 && (
           <div>
             <Chart data={result[0]} />
           </div>
         )}
-        <button onClick={() => toggle()}>
-              {start ? "Stop" : "Start"}
-            </button>
       </header>
     </div>
   );

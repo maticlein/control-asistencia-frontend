@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from './Home';
+import Login from './Login';
+import Signup from './Signup';
 import Classifier from './Classifier';
 import './App.css';
 
@@ -23,7 +24,9 @@ function App() {
         </ul>
       <div>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Login />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/classifier" element={<Classifier />} />
       </Routes>
       </div> 

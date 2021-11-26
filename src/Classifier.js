@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState} from 'react';
 import ml5 from 'ml5';
 import useInterval from '@use-it/interval';
-import './App.css';
+import './Classifier.css';
 import Chart from './Chart';
 
 let classifier;
@@ -34,12 +34,12 @@ function Classifier() {
     }
   }, 5000);
   return (
-  <div className="App">
+  <div className="classifier">
   <h1>
     Control de asistencia
   </h1>
-  <div className="App-body">
-    <div className="App-body-video">
+  <div className="classifier-body">
+    <div className="classifier-body-video">
     <video
         ref={videoRef}
         style={{ transform: "scale(-1, 1)" }}
@@ -47,7 +47,7 @@ function Classifier() {
         height="500"
       />
     </div>
-    <div className="App-body-info">
+    <div className="classifier-body-info">
     {result.length > 0 && (
       <div>
         <Chart data={result[0]} />

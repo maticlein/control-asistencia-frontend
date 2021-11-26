@@ -8,10 +8,12 @@ const Chart = (props) => {
   console.log(label, confidence);
   return (
     <div>
-      <h3>Classification Confidence: {label}</h3>  
+      <h3>Resultado de clasificación:</h3> 
+      <h3> {label} </h3>  
       <GaugeChart
         id="gauge-chart3"
         nrOfLevels={3}
+        arcsLength={[0.375, 0.375, 0.25]}
         colors={["#FF5F6D", "#FFC371", "rgb(26 202 26)"]}
         arcWidth={0.3}
         percent={confidence}

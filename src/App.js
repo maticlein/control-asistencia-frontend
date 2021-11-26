@@ -1,68 +1,33 @@
-import React, { useEffect, useRef, useState } from "react";
-import ml5 from 'ml5';
-import useInterval from '@use-it/interval';
+import React from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Home from './Home';
+import Classifier from './Classifier';
 import './App.css';
 
-import Chart from './Chart';
-
-let classifier;
-
 function App() {
-  const videoRef = useRef();
-  const [start, setStart] = useState(false);
-  const [result, setResult] = useState([]);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    classifier = ml5.imageClassifier("./model/model.json", () => {
-      navigator.mediaDevices
-        .getUserMedia({ video: true, audio: false })
-        .then((stream) => {
-          videoRef.current.srcObject = stream;
-          videoRef.current.play();
-          setLoaded(true);
-        });
-    });
-  }, []);
-
-  useInterval(() => {
-    if (classifier && start) {
-      classifier.classify(videoRef.current, (error, results) => {
-        if (error) {
-          console.error(error);
-          return;
-        }
-        setResult(results);
-        console.log(results)
-      });
-    }
-  }, 2000);
-  const toggle = () => {
-    setStart(!start);
-    setResult([]);
-  }
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>
-          Control de asistencia
-        </h1>
-        <video
-            ref={videoRef}
-            style={{ transform: "scale(-1, 1)" }}
-            width="500"
-            height="350"
-          />
-        <button onClick={() => toggle()}>
-              {start ? "Stop" : "Start"}
-        </button>
-        {result.length > 0 && (
-          <div>
-            <Chart data={result[0]} />
-          </div>
-        )}
-      </header>
-    </div>
+  return(
+    <BrowserRouter>
+      <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/classifier">Classifier</Link>
+          </li>
+          <li>
+            <Link to="/signup">Registro</Link>
+          </li>
+          <li>
+            <Link to="/login">Inicia Sesión</Link>
+          </li>
+        </ul>
+      <div>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/classifier" element={<Classifier />} />
+      </Routes>
+      </div> 
+    </BrowserRouter>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css';
 import './Form.css';
 
@@ -14,7 +15,9 @@ function Login() {
                     <input></input>
                     <label>Password</label>
                     <input></input>
-                    <button>Ingresar</button>
+                    <Link to="/create" className="form-fields-link">
+                        <button className="form-fields-button">Ingresar</button>
+                    </Link>
                 </form>
             </div> 
         </div>

@@ -11,9 +11,9 @@ function Signup(){
             <div className="form-card">
                 <form className="form-fields">
                     <label>User</label>
-                    <input></input>
+                    <input autocomplete="off"></input>
                     <label>Password</label>
-                    <input type="password"></input>
+                    <input type="password" autocomplete="off"></input>
                     <Link to="/login" className="form-fields-link">
                         <button className="form-fields-button">Registrarse</button>
                     </Link>

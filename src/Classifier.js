@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState} from 'react';
+import axios from 'axios';
 import ml5 from 'ml5';
 import useInterval from '@use-it/interval';
 import './Classifier.css';
@@ -7,8 +8,11 @@ import Chart from './Chart';
 let classifier;
 
 function Classifier() {
-    const videoRef = useRef();
+  const videoRef = useRef();
   const [result, setResult] = useState([]);
+  const [form, setValues] = useState({
+    students: "",
+});
 
   useEffect(() => {
     classifier = ml5.imageClassifier("./model/model.json", () => {
@@ -29,6 +33,15 @@ function Classifier() {
           return;
         }
         setResult(results);
+        if(results[0].label !== "Fondo" && results[0].confidence >= 0.85) {
+          setValues({
+            students: results[0].label
+          });
+          axios.put(`http://localhost:3001/api/lessons/${sessionStorage.getItem("lesson_id")}`, form)
+            .then((response) => {
+              // console.log(response);
+            });
+        }
         // console.log(results)
       });
     }

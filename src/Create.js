@@ -10,6 +10,7 @@ function Create() {
         teacher: "",
         date: "",
         time: "",
+        students: [],
         loading: false,
     });
 
@@ -26,9 +27,11 @@ function Create() {
           loading: true,
         });
         axios
-          .post("https://localhost:3001/api/lessons", form)
+          .post("http://localhost:3001/api/lessons", form)
           .then((response) => {
-            console.log(response);
+            if (!sessionStorage.getItem("lesson_id")) {
+                sessionStorage.setItem("lesson_id", response.data._id);
+            }
             setValues({
                 ...form,
                 loading: false,
@@ -44,9 +47,9 @@ function Create() {
             <div className="form-card">
                 <form className="form-fields">
                     <label>Nombre asignatura</label>
-                    <input name="subject" onChange={handleInput}></input>
+                    <input name="subject" onChange={handleInput} autocomplete="off"></input>
                     <label>Profesor</label>
-                    <input name="teacher" onChange={handleInput}></input>
+                    <input name="teacher" onChange={handleInput} autocomplete="off"></input>
                     <label>Fecha</label>
                     <input name="date" type="date" onChange={handleInput}></input>
                     <label>Hora inicio</label>

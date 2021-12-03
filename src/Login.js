@@ -15,9 +15,9 @@ function Login() {
                 <div className="form-card">
                     <form className="form-fields">
                         <label>User</label>
-                        <input></input>
+                        <input autocomplete="off"></input>
                         <label>Password</label>
-                        <input type="password"></input>
+                        <input type="password" autocomplete="off"></input>
                         <Link to="/create" className="form-fields-link">
                             <button className="form-fields-button">Ingresar</button>
                         </Link>

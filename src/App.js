@@ -9,28 +9,30 @@ import './App.css';
 function App() {
   return(
     <BrowserRouter>
-      <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/classifier">Classifier</Link>
-          </li>
-          <li>
-            <Link to="/signup">Registro</Link>
-          </li>
-          <li>
-            <Link to="/login">Inicia Sesión</Link>
-          </li>
-          <li>
-            <Link to="/create">Crear clase</Link>
-          </li>
+      <nav>
+        <Link to="/">
+          <img src="./img/Flechitas.png" className="navbar-logo" alt="logo innovacion curricular"></img>
+        </Link>
+        <ul className="navbar-menu">
+            <li>
+              <Link to="/signup" className="navbar-menu-option">Registro</Link>
+            </li>
+            <li>
+              <Link to="/login" className="navbar-menu-option">Inicia Sesión</Link>
+            </li>
+            <li>
+              <Link to="/create" className="navbar-menu-option">Crear clase</Link>
+            </li>
+            <li>
+              <Link to="/classifier" className="navbar-menu-option">Classifier</Link>
+            </li>
         </ul>
+      </nav>
       <div>
       <Routes>
-        <Route exact path="/" element={<Login />} />
-        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/" element={<Signup />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/login" element={<Login />} />
         <Route exact path="/create" element={<Create />} />
         <Route exact path="/classifier" element={<Classifier />} />
       </Routes>

@@ -13,8 +13,8 @@ function Signup(){
                     <label>User</label>
                     <input></input>
                     <label>Password</label>
-                    <input></input>
-                    <Link to="/" className="form-fields-link">
+                    <input type="password"></input>
+                    <Link to="/login" className="form-fields-link">
                         <button className="form-fields-button">Registrarse</button>
                     </Link>
                 </form>

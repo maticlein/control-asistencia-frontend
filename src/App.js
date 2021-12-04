@@ -4,6 +4,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Create from './Create'
 import Classifier from './Classifier';
+import ManualInput from "./ManualInput";
 import './App.css';
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
               <Link to="/create" className="navbar-menu-option">Crear clase</Link>
             </li>
             <li>
-              <Link to="/classifier" className="navbar-menu-option">Classifier</Link>
+              <Link to="/classifier" className="navbar-menu-option">Clasificador</Link>
             </li>
         </ul>
       </nav>
@@ -35,6 +36,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/create" element={<Create />} />
         <Route exact path="/classifier" element={<Classifier />} />
+        <Route exact path="/manual-input" element={<ManualInput />} />
       </Routes>
       </div> 
     </BrowserRouter>

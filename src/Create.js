@@ -27,7 +27,7 @@ function Create() {
           loading: true,
         });
         axios
-          .post("http://localhost:3001/api/lessons", form)
+          .post("https://control-asistencia-backend.vercel.app/api/lessons", form)
           .then((response) => {
             if (!sessionStorage.getItem("lesson_id")) {
                 sessionStorage.setItem("lesson_id", response.data._id);
